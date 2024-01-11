@@ -74,7 +74,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.quiz_mongodb/com.quiz_mongodb.HelloApplication</mainClass>
+                            <mainClass>com.quiz_mongodb/com.quiz_mongodb.Launcher</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
