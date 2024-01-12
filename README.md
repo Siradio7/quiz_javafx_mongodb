@@ -22,7 +22,7 @@ Ce projet est une application de quiz sur la programmation développée en utili
 
 ## Développement
 
-### Prérequis
+### Prérequis 
 
 - Java JDK (version 20)
 
