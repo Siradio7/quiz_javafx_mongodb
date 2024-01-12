@@ -1,0 +1,23 @@
+.button {
+    -fx-background-color: transparent;
+    -fx-border-color: #022B3A;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.button:hover {
+    -fx-background-color: #022B3A;
+    -fx-text-fill: white;
+}
+
+.text-field {
+    -fx-background-color: #115363;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+}
+
+.text-field:focused {
+    -fx-background-color: #135567;
+    -fx-text-fill: black;
+}
