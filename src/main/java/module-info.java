@@ -15,4 +15,6 @@ module com.quiz_mongodb {
     exports com.quiz_mongodb;
     opens com.quiz_mongodb.controller to javafx.fxml;
     exports com.quiz_mongodb.controller;
+    exports com.quiz_mongodb.database;
+    opens com.quiz_mongodb.database to javafx.fxml;
 }
