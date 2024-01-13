@@ -31,4 +31,10 @@
         </Label>
       <PasswordField fx:id="tf_password_confirmation" layoutX="319.0" layoutY="186.0" prefHeight="34.0" prefWidth="225.0" promptText="Confirmez le mot de passe" />
     </AnchorPane>
+
+    <Label fx:id="toast" alignment="CENTER" layoutX="499.0" layoutY="31.0" prefHeight="61.0" prefWidth="264.0" style="-fx-background-color: #022B3A; -fx-background-radius: 10;" text="Toast JavaFX" textFill="WHITE" visible="false" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="31.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
 </AnchorPane>
