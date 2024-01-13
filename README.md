@@ -9,9 +9,11 @@ Ce projet est une application de quiz sur la programmation développée en utili
 - Possibilité de suivre les scores et voir les résultats à la fin du quiz.
 
 ## Captures d'écran
-###### Page de connexion
 
-![Capture d'écran 1](screenshots/capture1.png)
+###### Page de connexion
+![Page de connexion](screenshots/capture1.png)
+###### Page d'inscription
+![Page d'inscription](screenshots/capture2.png)
 
 ## Comment utiliser
 
