@@ -11,6 +11,8 @@ module com.quiz_mongodb {
     requires org.mongodb.bson;
     requires org.slf4j;
 
+    requires java.prefs;
+
     opens com.quiz_mongodb to javafx.fxml;
     exports com.quiz_mongodb;
     opens com.quiz_mongodb.controller to javafx.fxml;

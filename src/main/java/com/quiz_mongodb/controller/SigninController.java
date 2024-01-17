@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.prefs.Preferences;
 
 public class SigninController implements Initializable {
     @FXML
@@ -32,6 +33,8 @@ public class SigninController implements Initializable {
 
     MongoDatabase database;
     MongoCollection<Document> users;
+    Preferences preferences = Preferences.userNodeForPackage(SigninController.class);
+    private String USER_IS_CONNECTED_KEY = "";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,6 +57,7 @@ public class SigninController implements Initializable {
 
             if (result != null) {
                 showToast("Connecté avec succès", ToastType.SUCCESS);
+                preferences.put(USER_IS_CONNECTED_KEY, "true");
                 Database.close();
             } else {
                 showToast("Erreur d'authentification", ToastType.ERROR);
