@@ -10,10 +10,6 @@ public class Database {
     private static MongoDatabase database;
     static final String URI = "mongodb://localhost:27017";
 
-    private Database() {
-        // Constructeur privé pour empêcher l'instanciation directe depuis l'extérieur
-    }
-
     public static synchronized MongoDatabase getDatabase() {
         if (mongoClient == null) {
             mongoClient = MongoClients.create(URI);
