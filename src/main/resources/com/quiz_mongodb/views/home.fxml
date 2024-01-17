@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane cache="true" prefHeight="478.0" prefWidth="778.0" style="-fx-background-color: #0A3F4F;" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz_mongodb.controller.HomeController">
+    <AnchorPane layoutY="8.0" prefHeight="478.0" prefWidth="228.0" style="-fx-background-color: #022B3A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ImageView cache="true" fitHeight="137.0" fitWidth="131.0" layoutX="48.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="17.0">
+            <Image url="@../images/logo.png" />
+        </ImageView>
+      <VBox cache="true" layoutX="50.0" layoutY="187.0" prefHeight="292.0" prefWidth="200.0" style="-fx-background-radius: 0 0 20 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="186.0">
+         <children>
+            <Button alignment="BASELINE_LEFT" cache="true" mnemonicParsing="false" prefHeight="45.0" prefWidth="238.0" styleClass="button_navbar" text="Accueil" textFill="WHITE">
+               <font>
+                  <Font name="JetBrains Mono ExtraBold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding></Button>
+            <Button alignment="BASELINE_LEFT" cache="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="238.0" styleClass="button_navbar" text="Commencer un quiz" textFill="WHITE">
+                <font>
+                   <Font name="JetBrains Mono ExtraBold" size="14.0" />
+                </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" cache="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="243.0" styleClass="button_navbar" text="Joueurs" textFill="WHITE">
+               <font>
+                  <Font name="JetBrains Mono ExtraBold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding></Button>
+            <Button alignment="BASELINE_LEFT" cache="true" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="252.0" styleClass="button_navbar" text="Mes informations" textFill="WHITE">
+               <font>
+                  <Font name="JetBrains Mono ExtraBold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding></Button>
+            <Button alignment="BASELINE_LEFT" cache="true" layoutX="10.0" layoutY="100.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="251.0" styleClass="button_navbar" text="Paramètres" textFill="WHITE">
+               <font>
+                  <Font name="JetBrains Mono ExtraBold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding></Button>
+            <Button alignment="BASELINE_LEFT" cache="true" layoutX="10.0" layoutY="145.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="241.0" styleClass="button_navbar" text="Se déconnecter" textFill="#ff3232">
+               <font>
+                  <Font name="JetBrains Mono ExtraBold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="40.0" />
+               </padding></Button>
+         </children>
+      </VBox>
+    </AnchorPane>
+   <AnchorPane layoutX="228.0" layoutY="50.0" prefHeight="428.0" prefWidth="550.0" style="-fx-background-color: #0A3F4F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <children>
+         <Pane layoutX="25.0" layoutY="21.0" prefHeight="123.0" prefWidth="137.0" style="-fx-background-color: #022B3A; -fx-background-radius: 20;" />
+      </children></AnchorPane>
+   <Label layoutX="227.0" layoutY="5.0" prefHeight="45.0" prefWidth="550.0" style="-fx-background-color: #022B2A;" text="Accueil" textFill="WHITE" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <padding>
+         <Insets left="20.0" />
+      </padding>
+      <font>
+         <Font name="Yu Gothic Regular" size="15.0" />
+      </font>
+   </Label>
+</AnchorPane>

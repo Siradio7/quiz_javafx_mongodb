@@ -1,0 +1,20 @@
+.button_navbar {
+    -fx-background-color: transparent;
+}
+
+.button_navbar:hover {
+    -fx-background-color:  #1F7A8C;
+    -fx-text-fill: black;
+}
+
+.button_scene {
+    -fx-background-color: transparent;
+    -fx-border-color: #022B3A;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.button_scene:hover {
+    -fx-background-color: #022B3A;
+    -fx-text-fill: white;
+}
