@@ -6,35 +6,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="478.0" prefWidth="777.0" style="-fx-background-color: #0A3F4F;" stylesheets="@../css/signin.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz_mongodb.controller.SignupController">
-    <AnchorPane layoutX="103.0" layoutY="70.0" prefHeight="339.0" prefWidth="571.0" style="-fx-background-color: #1F7A8C; -fx-background-radius: 20;" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="70.0">
+<AnchorPane cache="true" prefHeight="478.0" prefWidth="777.0" style="-fx-background-color: #0A3F4F;" stylesheets="@../css/signin.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quiz_mongodb.controller.SignupController">
+    <AnchorPane cache="true" layoutX="103.0" layoutY="70.0" prefHeight="339.0" prefWidth="571.0" style="-fx-background-color: #1F7A8C; -fx-background-radius: 20;" AnchorPane.bottomAnchor="69.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="70.0">
         <effect>
             <DropShadow />
         </effect>
-        <Pane prefHeight="339.0" prefWidth="286.0" style="-fx-background-color: #022B3A; -fx-background-radius: 20 0 0 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <ImageView fitHeight="209.0" fitWidth="200.0" layoutX="43.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+        <Pane cache="true" prefHeight="339.0" prefWidth="286.0" style="-fx-background-color: #022B3A; -fx-background-radius: 20 0 0 20;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView cache="true" fitHeight="209.0" fitWidth="200.0" layoutX="43.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../images/logo.png" />
             </ImageView>
         </Pane>
-        <Label alignment="CENTER" layoutX="329.0" layoutY="28.0" prefHeight="31.0" prefWidth="206.0" text="Créer un compte">
+        <Label alignment="CENTER" cache="true" layoutX="329.0" layoutY="28.0" prefHeight="31.0" prefWidth="206.0" text="Créer un compte">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
         <TextField fx:id="tf_username" layoutX="320.0" layoutY="85.0" prefHeight="34.0" prefWidth="225.0" promptText="Entrez le nom d'utilisateur" styleClass="text-field" />
         <PasswordField fx:id="tf_password" layoutX="319.0" layoutY="136.0" prefHeight="34.0" prefWidth="225.0" promptText="Entrez le mot de passe" />
-        <Button layoutX="455.0" layoutY="238.0" mnemonicParsing="false" onAction="#signup" prefHeight="34.0" prefWidth="89.0" text="S'inscrire" />
-        <Label alignment="CENTER" layoutX="352.0" layoutY="283.0" onMouseClicked="#loadSignin" prefHeight="31.0" prefWidth="159.0" text="J'ai déjà un compte">
+        <PasswordField fx:id="tf_password_confirmation" layoutX="319.0" layoutY="186.0" prefHeight="34.0" prefWidth="225.0" promptText="Confirmez le mot de passe" />
+        <Button cache="true" layoutX="455.0" layoutY="238.0" mnemonicParsing="false" onAction="#signup" prefHeight="34.0" prefWidth="89.0" text="S'inscrire" />
+        <Label alignment="CENTER" cache="true" layoutX="352.0" layoutY="283.0" onMouseClicked="#loadSignin" prefHeight="31.0" prefWidth="159.0" text="J'ai déjà un compte">
             <font>
                 <Font size="11.0" />
             </font>
         </Label>
-      <PasswordField fx:id="tf_password_confirmation" layoutX="319.0" layoutY="186.0" prefHeight="34.0" prefWidth="225.0" promptText="Confirmez le mot de passe" />
     </AnchorPane>
 
-    <Label fx:id="toast" alignment="CENTER" layoutX="499.0" layoutY="31.0" prefHeight="61.0" prefWidth="264.0" style="-fx-background-color: #022B3A; -fx-background-radius: 10;" text="Toast JavaFX" textFill="WHITE" visible="false" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="31.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="toast" alignment="CENTER" layoutX="499.0" layoutY="31.0" prefHeight="61.0" prefWidth="264.0" text="Toast JavaFX" textFill="WHITE" visible="false" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="31.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="14.0" />
         </font>
     </Label>
 </AnchorPane>
