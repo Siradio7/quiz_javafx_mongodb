@@ -1,26 +1,21 @@
 package com.quiz_mongodb.controller;
 
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.result.InsertOneResult;
-import com.quiz_mongodb.database.Database;
+import com.quiz_mongodb.dao.UserDAO;
+import com.quiz_mongodb.enums.ToastType;
+import com.quiz_mongodb.modele.User;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.bson.Document;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,12 +28,9 @@ public class SignupController implements Initializable {
     @FXML
     Label toast;
 
-    MongoDatabase database;
-    MongoCollection<Document> users;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        database = Database.getDatabase();
-        users = database.getCollection("users");
+
     }
 
     @FXML
@@ -48,30 +40,52 @@ public class SignupController implements Initializable {
         String password_confirmation = tf_password_confirmation.getText();
 
         if (username.isEmpty() || password.isEmpty() || password_confirmation.isEmpty()) {
-            // TODO
-            System.out.println("R");
+            showToast("Veuillez remplir tous les champs", ToastType.INFO);
         } else {
             if (!password.equals(password_confirmation)) {
-                System.out.println("Password");
+                showToast("Les mots de passe ne sont pas identiques", ToastType.WARNING);
             } else {
-                Document user = new Document();
+                User user = new User(username, password);
+                UserDAO data = new UserDAO();
 
-                user.append("username", username);
-                user.append("password", password);
-                InsertOneResult result = users.insertOne(user);
-
-                if (result.getInsertedId() != null) {
-                    showToast("Inscription effectuée");
-                    loadNewContent("signin.fxml");
+                if (data.find(user)) {
+                    showToast("Ce nom d'utilisateur est déjà utilisé", ToastType.ERROR);
+                } else {
+                    data.add(user);
+                    showToast("Inscription effectuée", ToastType.SUCCESS);
                 }
             }
         }
     }
 
-    private void showToast(String message) {
-        toast.setText(message);
-        toast.setVisible(true);
+    @FXML
+    public void loadSignin() {
+        loadNewContent("signin.fxml");
+    }
 
+    // Méthode pour afficher le toast
+    private void showToast(String message, ToastType toastType) {
+        toast.setText(message);
+
+        switch (toastType) {
+            case INFO:
+                toast.setStyle("-fx-text-fill: white; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic();
+                break;
+            case WARNING:
+                toast.setStyle("-fx-text-fill: yellow; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic(); On charge l'icône d'avertissement
+                break;
+            case ERROR:
+                toast.setStyle("-fx-text-fill: red; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic(); On charge l'icône d'erreur
+                break;
+            case SUCCESS:
+                toast.setStyle("-fx-text-fill: green; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic(); On charge l'icône de succès
+        }
+
+        toast.setVisible(true);
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setNode(toast);
         translateTransition.setDuration(Duration.millis(1000));
@@ -91,7 +105,10 @@ public class SignupController implements Initializable {
                 translateTransition.play();
                 translateTransition.setOnFinished(event -> {
                     toast.setVisible(false);
-                    // TODO chargment de la scène principal de l'application
+
+                    if (toastType == ToastType.SUCCESS) {
+                        loadNewContent("signin.fxml");
+                    }
                 });
             }
         };
@@ -99,16 +116,11 @@ public class SignupController implements Initializable {
         timer.schedule(task, 2000);
     }
 
-    @FXML
-    public void loadSignin() {
-        loadNewContent("signin.fxml");
-    }
-
     private void loadNewContent(String fichier) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/" + fichier));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/quiz_mongodb/views/" + fichier));
             Stage stage = (Stage) tf_username.getScene().getWindow();
-            Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+            Scene scene = new Scene(loader.load());
 
             stage.setScene(scene);
         } catch (IOException e) {

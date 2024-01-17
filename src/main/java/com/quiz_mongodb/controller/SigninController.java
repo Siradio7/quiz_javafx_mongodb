@@ -2,6 +2,7 @@ package com.quiz_mongodb.controller;
 
 import com.mongodb.client.*;
 import com.quiz_mongodb.database.Database;
+import com.quiz_mongodb.enums.ToastType;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,8 +45,7 @@ public class SigninController implements Initializable {
         String password = tf_password.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            // Traitement
-            System.out.println("Remplissez tous les champs du formulaire");
+            showToast("Remplissez tous les champs du formulaire", ToastType.INFO);
         } else {
             Document userDoc = new Document();
             userDoc.append("username", username);
@@ -53,23 +53,36 @@ public class SigninController implements Initializable {
             Document result = users.find(userDoc).first();
 
             if (result != null) {
-                showToast("Connecté avec succès");
-                //System.out.println(result.toJson());
-                // Chargement de la scene principale une fois la connexion effecutée
-                //Database.close();
+                showToast("Connecté avec succès", ToastType.SUCCESS);
+                Database.close();
             } else {
-                Alert error = new Alert(Alert.AlertType.ERROR);
-                error.setTitle("Erreur d'authentification");
-                error.setContentText("Erreur, veuillez réessayer");
-                error.show();
+                showToast("Erreur d'authentification", ToastType.ERROR);
             }
         }
     }
 
-    private void showToast(String message) {
+    private void showToast(String message, ToastType toastType) {
         toast.setText(message);
-        toast.setVisible(true);
 
+        switch (toastType) {
+            case INFO:
+                toast.setStyle("-fx-text-fill: white; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic();
+                break;
+            case WARNING:
+                toast.setStyle("-fx-text-fill: yellow; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic(); On charge l'icône d'avertissement
+                break;
+            case ERROR:
+                toast.setStyle("-fx-text-fill: red; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic(); On charge l'icône d'erreur
+                break;
+            case SUCCESS:
+                toast.setStyle("-fx-text-fill: green; -fx-background-color: #022B3A; -fx-background-radius: 10");
+                //toast.setGraphic(); On charge l'icône de succès
+        }
+
+        toast.setVisible(true);
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setNode(toast);
         translateTransition.setDuration(Duration.millis(1000));
@@ -89,7 +102,10 @@ public class SigninController implements Initializable {
                 translateTransition.play();
                 translateTransition.setOnFinished(event -> {
                     toast.setVisible(false);
-                    // TODO chargment de la scène principal de l'application
+
+                    if (toastType == ToastType.SUCCESS) {
+                        loadNewContent("home.fxml");
+                    }
                 });
             }
         };
@@ -104,9 +120,9 @@ public class SigninController implements Initializable {
 
     private void loadNewContent(String fichier) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("views/" + fichier));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/quiz_mongodb/views/" + fichier));
             Stage stage = (Stage) tf_username.getScene().getWindow();
-            Scene scene = new Scene(loader.load(), stage.getWidth(), stage.getHeight());
+            Scene scene = new Scene(loader.load());
 
             stage.setScene(scene);
         } catch (IOException e) {
